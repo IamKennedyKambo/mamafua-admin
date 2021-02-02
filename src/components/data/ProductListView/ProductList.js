@@ -4,7 +4,7 @@ import { Pagination } from "@material-ui/lab";
 import Page from "../../Page";
 import Toolbar from "./Toolbar";
 import ProductCard from "./ProductCard";
-import { local_url } from "../../../urls";
+import { base_url } from "../../../urls";
 import { useQuery, QueryClient, QueryClientProvider } from "react-query";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import Services from "../../uploads/services/Services";
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 const queryClient = new QueryClient();
 
 const fetchServices = async () => {
-  const res = await fetch(`${local_url}/services`);
+  const res = await fetch(`${base_url}services`);
   return res.json();
 };
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Grid, makeStyles } from "@material-ui/core";
 import { Pagination } from "@material-ui/lab";
 import Page from "../../Page";
-import { local_url } from "../../../urls";
+import { base_url } from "../../../urls";
 import { useQuery, QueryClient, QueryClientProvider } from "react-query";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import Profile from "../../uploads/employees/Profile";
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 const queryClient = new QueryClient();
 
 const fetchEmployees = async () => {
-  const res = await fetch(`${local_url}/profiles`);
+  const res = await fetch(`${base_url}profiles`);
   return res.json();
 };
 

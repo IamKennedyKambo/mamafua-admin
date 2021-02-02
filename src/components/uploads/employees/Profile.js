@@ -1,6 +1,6 @@
 import { Button, Container, makeStyles, TextField } from "@material-ui/core";
 import React, { useState } from "react";
-import { local_url } from "../../../urls";
+import { base_url } from "../../../urls";
 import ImageUploader from "react-images-upload";
 
 const useStyles = makeStyles((theme) => ({
@@ -59,7 +59,7 @@ const Profile = () => {
     formData.append("offerPc", profile.offerPc);
     formData.append("description", profile.description);
     formData.append("imageUrl", profile.imageUrl && profile.imageUrl);
-    let url = `${local_url}/profiles/create`;
+    let url = `${base_url}profiles/create`;
     let method = "POST";
     // if (this.state.editPost) {
     //   url = "http://localhost:8080/feed/post/" + this.state.editPost._id;

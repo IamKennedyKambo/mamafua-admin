@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import { LoginView, RegisterView } from "./components/auth";
 import { Dashboard } from "./components/data";
+import { base_url } from "./urls";
 
 class App extends Component {
   state = {
@@ -46,7 +47,7 @@ class App extends Component {
 
   loginHandler = (event, authData) => {
     this.setState({ authLoading: true });
-    fetch("http://localhost:8080/auth/login", {
+    fetch(`${base_url}auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -96,7 +97,7 @@ class App extends Component {
   signupHandler = (event, authData) => {
     this.setState({ authLoading: true });
     console.log(authData);
-    fetch("http://localhost:8080/auth/signup", {
+    fetch(`${base_url}auth/signup`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
