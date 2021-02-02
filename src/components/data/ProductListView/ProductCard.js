@@ -41,7 +41,7 @@ const ProductCard = ({ className, product, ...rest }) => {
         <Box display="flex" justifyContent="center" mb={6}>
           <Avatar
             alt="Product"
-            src={`${base_url}${product.imageUrl}`}
+            src={`${base_url}/${product.imageUrl}`}
             variant="square"
           />
         </Box>

@@ -59,7 +59,7 @@ const Services = () => {
     formData.append("offerPc", service.offerPc);
     formData.append("description", service.description);
     formData.append("imageUrl", service.imageUrl && service.imageUrl);
-    let url = `${base_url}services/create`;
+    let url = `${base_url}/services/create`;
     let method = "POST";
     // if (this.state.editPost) {
     //   url = "http://localhost:8080/feed/post/" + this.state.editPost._id;

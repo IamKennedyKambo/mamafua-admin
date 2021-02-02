@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 const queryClient = new QueryClient();
 
 const fetchEmployees = async () => {
-  const res = await fetch(`${base_url}profiles`);
+  const res = await fetch(`${base_url}/profiles`);
   return res.json();
 };
 

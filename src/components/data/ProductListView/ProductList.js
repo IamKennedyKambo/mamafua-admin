@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 const queryClient = new QueryClient();
 
 const fetchServices = async () => {
-  const res = await fetch(`${base_url}services`);
+  const res = await fetch(`${base_url}/services`);
   return res.json();
 };
 
