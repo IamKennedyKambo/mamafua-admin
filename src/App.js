@@ -47,7 +47,7 @@ class App extends Component {
 
   loginHandler = (event, authData) => {
     this.setState({ authLoading: true });
-    fetch(`${base_url}auth/login`, {
+    fetch(`${base_url}/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -97,7 +97,7 @@ class App extends Component {
   signupHandler = (event, authData) => {
     this.setState({ authLoading: true });
     console.log(authData);
-    fetch(`${base_url}auth/signup`, {
+    fetch(`${base_url}/auth/signup`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
