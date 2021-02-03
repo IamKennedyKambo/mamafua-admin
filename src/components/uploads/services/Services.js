@@ -1,10 +1,4 @@
-import {
-  Button,
-  Container,
-  Fab,
-  makeStyles,
-  TextField,
-} from "@material-ui/core";
+import { Container, Fab, makeStyles, TextField } from "@material-ui/core";
 import React, { useState } from "react";
 import { base_url } from "../../../urls";
 import ImageUploader from "react-images-upload";
