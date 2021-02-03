@@ -19,10 +19,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
-    width: 250,
+    width: "auto",
   },
   media: {
-    height: 150,
+    height: 180,
     margin: 20,
   },
   grid: {
@@ -49,19 +49,7 @@ const ProductCard = ({ className, product, ...rest }) => {
         title="Contemplative Reptile"
       />
       <CardContent>
-        {/* <Box display="flex" justifyContent="center" mb={6}>
-          <img
-            alt="Product"
-            src={`${base_url}${product.imageUrl}`}
-            variant="square"
-          />
-        </Box> */}
-        <Typography
-          align="center"
-          color="textPrimary"
-          gutterBottom
-          variant="h5"
-        >
+        <Typography color="textPrimary" gutterBottom variant="h5">
           {product.name}
         </Typography>
         <Grid className={classes.grid} align="center" container>
