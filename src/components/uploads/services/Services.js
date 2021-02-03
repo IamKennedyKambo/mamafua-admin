@@ -18,9 +18,6 @@ const useStyles = makeStyles((theme) => ({
   image: {
     gridColumn: "1 / 2",
   },
-  button: {
-    margin: "0 auto",
-  },
 }));
 
 const Services = () => {
