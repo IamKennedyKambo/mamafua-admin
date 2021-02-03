@@ -46,7 +46,7 @@ const ProductCard = ({ className, product, ...rest }) => {
       <CardMedia
         className={classes.media}
         image={`${base_url}/${product.imageUrl}`}
-        title="Contemplative Reptile"
+        title={product.name}
       />
       <CardContent>
         <Typography color="textPrimary" gutterBottom variant="h5">
