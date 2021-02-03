@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
   image: {
     gridColumn: "1 / 2",
   },
+  button: {
+    margin: "0 auto",
+  },
 }));
 
 const Services = () => {
@@ -184,14 +187,6 @@ const Services = () => {
           className={classes.textField}
           variant="outlined"
         ></TextField>
-
-        <Button
-          className={classes.textField}
-          variant="outlined"
-          onClick={() => uploadService(service)}
-        >
-          Upload service
-        </Button>
       </Container>
 
       <Container>
@@ -204,6 +199,14 @@ const Services = () => {
           imgExtension={[".jpg", ".gif", ".png", ".gif"]}
           maxFileSize={5242880}
         />
+
+        <Button
+          className={classes.button}
+          variant="outlined"
+          onClick={() => uploadService(service)}
+        >
+          Upload service
+        </Button>
       </Container>
     </div>
   );
