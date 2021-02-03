@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import {
-  Avatar,
+  CardMedia,
   Box,
   Card,
   CardContent,
@@ -19,6 +19,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
+    width: 250,
+  },
+  media: {
+    height: 150,
+    margin: 20,
   },
   grid: {
     margin: "0 auto",
@@ -34,22 +39,28 @@ const useStyles = makeStyles((theme) => ({
 
 const ProductCard = ({ className, product, ...rest }) => {
   const classes = useStyles();
+  console.log(`${base_url}${product.imageUrl}`);
 
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
+      <CardMedia
+        className={classes.media}
+        image={`${base_url}/${product.imageUrl}`}
+        title="Contemplative Reptile"
+      />
       <CardContent>
-        <Box display="flex" justifyContent="center" mb={6}>
-          <Avatar
+        {/* <Box display="flex" justifyContent="center" mb={6}>
+          <img
             alt="Product"
             src={`${base_url}${product.imageUrl}`}
             variant="square"
           />
-        </Box>
+        </Box> */}
         <Typography
           align="center"
           color="textPrimary"
           gutterBottom
-          variant="h4"
+          variant="h5"
         >
           {product.name}
         </Typography>
