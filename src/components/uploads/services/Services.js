@@ -1,7 +1,14 @@
-import { Button, Container, makeStyles, TextField } from "@material-ui/core";
+import {
+  Button,
+  Container,
+  Fab,
+  makeStyles,
+  TextField,
+} from "@material-ui/core";
 import React, { useState } from "react";
 import { base_url } from "../../../urls";
 import ImageUploader from "react-images-upload";
+import AddIcon from "@material-ui/icons/Add";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,6 +24,11 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     gridColumn: "1 / 2",
+  },
+  button: {
+    position: "fixed",
+    bottom: 50,
+    right: 30,
   },
 }));
 
@@ -186,6 +198,14 @@ const Services = () => {
         ></TextField>
       </Container>
 
+      <Fab
+        color="primary"
+        className={classes.button}
+        onClick={() => uploadService(service)}
+      >
+        <AddIcon />
+      </Fab>
+
       <Container>
         <ImageUploader
           withIcon={true}
@@ -196,14 +216,6 @@ const Services = () => {
           imgExtension={[".jpg", ".gif", ".png", ".gif"]}
           maxFileSize={5242880}
         />
-
-        <Button
-          className={classes.button}
-          variant="outlined"
-          onClick={() => uploadService(service)}
-        >
-          Upload service
-        </Button>
       </Container>
     </div>
   );
