@@ -7,7 +7,7 @@ import { useQuery, QueryClient, QueryClientProvider } from "react-query";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import Profile from "../../uploads/employees/Profile";
 import ProductCard from "../ProductListView/ProductCard";
-import Toolbar from "../ProductListView/Toolbar";
+import Toolbar from "./Toolbar";
 
 const useStyles = makeStyles((theme) => ({
   root: {

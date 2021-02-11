@@ -19,7 +19,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import CloseIcon from "@material-ui/icons/Close";
 import Slide from "@material-ui/core/Slide";
-import Services from "../../uploads/services/Services";
+import Profile from "../../uploads/employees/Profile";
 
 const useStyles = makeStyles((theme) => ({
   importButton: {
@@ -96,7 +96,7 @@ const Toolbar = ({ className, ...rest }) => {
               <CloseIcon />
             </IconButton>
             <Typography variant="h6" className={classes.title}>
-              Upload a service
+              Upload a cleaner
             </Typography>
             <Button autoFocus color="inherit" onClick={handleClose}>
               save
@@ -104,7 +104,7 @@ const Toolbar = ({ className, ...rest }) => {
           </MaterialToolBar>
         </AppBar>
         {/* Content here Replace based on path*/}
-        <Services />
+        <Profile />
       </Dialog>
 
       <Box display="flex" justifyContent="flex-end">
@@ -129,7 +129,7 @@ const Toolbar = ({ className, ...rest }) => {
                     </InputAdornment>
                   ),
                 }}
-                placeholder="Search product"
+                placeholder="Search cleaner"
                 variant="outlined"
               />
             </Box>

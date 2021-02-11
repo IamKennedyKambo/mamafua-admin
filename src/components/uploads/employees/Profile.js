@@ -1,7 +1,8 @@
-import { Button, Container, makeStyles, TextField } from "@material-ui/core";
+import { Container, Fab, makeStyles, TextField } from "@material-ui/core";
 import React, { useState } from "react";
 import { base_url } from "../../../urls";
 import ImageUploader from "react-images-upload";
+import AddIcon from "@material-ui/icons/Add";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,18 +19,25 @@ const useStyles = makeStyles((theme) => ({
   image: {
     gridColumn: "1 / 2",
   },
+  button: {
+    position: "fixed",
+    bottom: 50,
+    right: 30,
+    zIndex: 10,
+  },
 }));
 
 const Profile = () => {
   const classes = useStyles();
 
-  const [profile, setProfile] = useState({
-    name: "",
-    onSitePrice: 0,
-    offSitePrice: 0,
-    machinePrice: 0,
-    offerPc: 0,
-    description: "",
+  const [service, setService] = useState({
+    firstName: "",
+    lastName: "",
+    phone: "",
+    email: "",
+    available: true,
+    status: "",
+    centerId: "",
     imageUrl: File,
   });
 
@@ -40,26 +48,27 @@ const Profile = () => {
   };
 
   const handleChange = (prop) => (event) => {
-    setProfile({ ...profile, [prop]: event.target.value });
+    setService({ ...service, [prop]: event.target.value });
   };
 
   const appendImage = () => {
     if (pictures) {
-      setProfile({ ...profile, imageUrl: pictures[0] });
+      setService({ ...service, imageUrl: pictures[0] });
     }
   };
 
-  const uploadProfile = (service) => {
+  const uploadService = (service) => {
     appendImage();
     const formData = new FormData();
-    formData.append("name", profile.name);
-    formData.append("onSitePrice", profile.onSitePrice);
-    formData.append("offSitePrice", profile.offSitePrice);
-    formData.append("machinePrice", profile.machinePrice);
-    formData.append("offerPc", profile.offerPc);
-    formData.append("description", profile.description);
-    formData.append("imageUrl", profile.imageUrl && profile.imageUrl);
-    let url = `${base_url}profiles/create`;
+    formData.append("firstName", service.firstName);
+    formData.append("lastName", service.lastName);
+    formData.append("centerId", service.centerId);
+    formData.append("phone", service.phone);
+    formData.append("email", service.email);
+    formData.append("available", service.available);
+    formData.append("status", service.status);
+    formData.append("imageUrl", service.imageUrl && service.imageUrl);
+    let url = `${base_url}/profiles/create`;
     let method = "POST";
     // if (this.state.editPost) {
     //   url = "http://localhost:8080/feed/post/" + this.state.editPost._id;
@@ -83,13 +92,14 @@ const Profile = () => {
       })
       .then((resData) => {
         console.log(resData);
-        setProfile({
-          name: "",
-          onSitePrice: 0,
-          offSitePrice: 0,
-          machinePrice: 0,
-          offerPc: 0,
-          description: "",
+        setService({
+          firstName: "",
+          lastName: "",
+          phone: "",
+          email: "",
+          available: true,
+          status: "",
+          centerId: "",
           imageUrl: File,
         });
         // const post = {
@@ -122,77 +132,74 @@ const Profile = () => {
     <div>
       <Container className={classes.root}>
         <TextField
-          value={profile.name}
+          value={service.firstName}
           fullWidth
-          label="Name"
-          id="field-name"
+          label="First name"
+          id="first-name"
           className={classes.textField}
-          onChange={handleChange("name")}
+          onChange={handleChange("firstName")}
           variant="outlined"
         ></TextField>
         <TextField
-          value={profile.offSitePrice}
+          value={service.lastName}
           fullWidth
-          type="Number"
-          label="Off-site price"
-          id="field-offsite"
+          label=" Last name"
+          id="last-name"
           name="offSitePrice"
           className={classes.textField}
-          onChange={handleChange("offSitePrice")}
+          onChange={handleChange("lastName")}
           variant="outlined"
         ></TextField>
         <TextField
-          value={profile.onSitePrice}
+          value={service.phone}
           fullWidth
-          type="Number"
-          label="On-site Price"
-          id="field-onsite"
+          label="Phone"
+          id="field-phone"
           className={classes.textField}
-          name="onSitePrice"
-          onChange={handleChange("onSitePrice")}
+          name="phone"
+          onChange={handleChange("phone")}
           variant="outlined"
         ></TextField>
         <TextField
-          value={profile.machinePrice}
+          value={service.email}
           fullWidth
-          type="Number"
-          name="machinePrice"
-          label="Machine Price"
-          id="field-machine"
-          onChange={handleChange("machinePrice")}
+          name="email"
+          label="Email"
+          id="field-email"
+          onChange={handleChange("email")}
           className={classes.textField}
           variant="outlined"
         ></TextField>
         <TextField
-          value={profile.offerPc}
+          value={service.status}
           fullWidth
-          type="Number"
-          name="offerPc"
-          label="Offer Percent"
-          id="field-offerPc"
-          onChange={handleChange("offerPc")}
+          name="status"
+          label="Status"
+          id="field-status"
+          onChange={handleChange("status")}
           className={classes.textField}
           variant="outlined"
         ></TextField>
         <TextField
-          value={profile.description}
+          value={service.centerId}
           fullWidth
-          label="Description"
-          name="description"
-          onChange={handleChange("description")}
-          id="field-description"
+          type="Center"
+          label="Center"
+          name="centerId"
+          onChange={handleChange("centerId")}
+          id="field-centerId"
           className={classes.textField}
           variant="outlined"
         ></TextField>
-
-        <Button
-          className={classes.textField}
-          variant="outlined"
-          onClick={() => uploadProfile(profile)}
-        >
-          Upload service
-        </Button>
       </Container>
+
+      <Fab
+        color="primary"
+        className={classes.button}
+        onClick={() => uploadService(service)}
+      >
+        <AddIcon />
+      </Fab>
 
       <Container>
         <ImageUploader
