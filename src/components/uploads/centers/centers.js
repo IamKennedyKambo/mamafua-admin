@@ -31,17 +31,11 @@ const Profile = () => {
   const classes = useStyles();
 
   const [service, setService] = useState({
-    firstName: "",
-    lastName: "",
-    password: "",
+    name: "",
     longitude: "",
     latitude: "",
     phone: "",
-    email: "",
-    available: true,
     status: "",
-    centerId: "",
-    imageUrl: File,
   });
 
   const [pictures, setPictures] = useState(null);
@@ -63,18 +57,12 @@ const Profile = () => {
   const uploadService = (service) => {
     appendImage();
     const formData = new FormData();
-    formData.append("firstName", service.firstName);
-    formData.append("lastName", service.lastName);
-    formData.append("centerId", service.centerId);
-    formData.append("password", service.password);
+    formData.append("name", service.name);
     formData.append("longitude", service.longitude);
     formData.append("latitude", service.latitude);
     formData.append("phone", service.phone);
-    formData.append("email", service.email);
-    formData.append("available", service.available);
     formData.append("status", service.status);
-    formData.append("imageUrl", service.imageUrl && service.imageUrl);
-    let url = `${base_url}/profiles/create`;
+    let url = `${base_url}/centers/create`;
     let method = "POST";
     // if (this.state.editPost) {
     //   url = "http://localhost:8080/feed/post/" + this.state.editPost._id;
@@ -99,17 +87,11 @@ const Profile = () => {
       .then((resData) => {
         console.log(resData);
         setService({
-          firstName: "",
-          lastName: "",
-          password: "",
-          longitude: "",
-          latitude: "",
+          name: "",
           phone: "",
-          email: "",
-          available: true,
+          latitude: "", 
+          longitude: "",
           status: "",
-          centerId: "",
-          imageUrl: File,
         });
         // const post = {
         //   _id: resData.post._id,
@@ -141,73 +123,32 @@ const Profile = () => {
     <div>
       <Container className={classes.root}>
         <TextField
-          value={service.firstName}
+          value={service.name}
           fullWidth
-          label="First name"
-          id="first-name"
+          label="Name"
+          id="name"
           className={classes.textField}
-          onChange={handleChange("firstName")}
-          variant="outlined"
-        ></TextField>
-        <TextField
-          value={service.lastName}
-          fullWidth
-          label=" Last name"
-          id="last-name"
-          name="offSitePrice"
-          className={classes.textField}
-          onChange={handleChange("lastName")}
+          onChange={handleChange("name")}
           variant="outlined"
         ></TextField>
         <TextField
           value={service.phone}
           fullWidth
           label="Phone"
-          id="field-phone"
-          className={classes.textField}
+          id="phone"
           name="phone"
+          className={classes.textField}
           onChange={handleChange("phone")}
           variant="outlined"
         ></TextField>
         <TextField
-          value={service.email}
+          value={service.latitude}
           fullWidth
-          name="email"
-          label="Email"
-          id="field-email"
-          onChange={handleChange("email")}
+          label="Latitude"
+          id="field-latitude"
           className={classes.textField}
-          variant="outlined"
-        ></TextField>
-        <TextField
-          value={service.status}
-          fullWidth
-          name="status"
-          label="Status"
-          id="field-status"
-          onChange={handleChange("status")}
-          className={classes.textField}
-          variant="outlined"
-        ></TextField>
-        <TextField
-          value={service.centerId}
-          fullWidth
-          type="Center"
-          label="Center"
-          name="centerId"
-          onChange={handleChange("centerId")}
-          id="field-centerId"
-          className={classes.textField}
-          variant="outlined"
-        ></TextField>
-        <TextField
-          value={service.password}
-          fullWidth
-          name="password"
-          label="Password"
-          id="field-password"
-          onChange={handleChange("password")}
-          className={classes.textField}
+          name="latitude"
+          onChange={handleChange("latitude")}
           variant="outlined"
         ></TextField>
         <TextField
@@ -221,12 +162,12 @@ const Profile = () => {
           variant="outlined"
         ></TextField>
         <TextField
-          value={service.latitude}
+          value={service.status}
           fullWidth
-          label="Latitude"
-          name="latitude"
-          onChange={handleChange("latitude")}
-          id="field-latitude"
+          name="status"
+          label="Status"
+          id="field-status"
+          onChange={handleChange("status")}
           className={classes.textField}
           variant="outlined"
         ></TextField>

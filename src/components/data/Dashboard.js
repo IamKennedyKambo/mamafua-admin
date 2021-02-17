@@ -24,7 +24,8 @@ import {
 } from "react-feather";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import ProductList from "./ProductListView/ProductList";
-import Employees from ".//Employees/Employees";
+import Employees from "./Employees/Employees";
+import Centers from "./Centers/Centers";
 import Overview from "./Overview";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import ListAltIcon from "@material-ui/icons/ListAlt";
@@ -135,9 +136,9 @@ export default function Dashboard() {
       title: "Dashboard",
     },
     {
-      href: "/customers",
+      href: "/centers",
       icon: ContactsOutlinedIcon,
-      title: "Customers",
+      title: "Centers",
     },
     {
       href: "/employees",
@@ -255,6 +256,7 @@ export default function Dashboard() {
             <Route exact path="/home" component={Overview} />
             <Route path="/products" component={ProductList} />
             <Route path="/employees" component={Employees} />
+            <Route path="/centers" component={Centers} />
             <Box pt={4}>
               <Copyright />
             </Box>

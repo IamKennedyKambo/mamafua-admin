@@ -37,49 +37,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ProductCard = ({ className, product, ...rest }) => {
+const CenterCard = ({ className, center, ...rest }) => {
   const classes = useStyles();
+
+  console.log(center)
 
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
       <CardMedia
         className={classes.media}
-        image={product.imageUrl && `${base_url}/${product.imageUrl}`}
-        title={product.name}
+        // image={product.imageUrl && `${base_url}/${product.imageUrl}`}
+        title={center.name}
       />
       <CardContent>
         <Typography color="textPrimary" gutterBottom variant="h5">
-          {product.name}
+          {center.name}
         </Typography>
         <Grid className={classes.grid} align="center" container>
+          
           <Grid item xs={4}>
             <Typography align="center" color="textPrimary" variant="body1">
-              On site
+              {/* {`${product.offSitePrice} Ksh`} */}
             </Typography>
           </Grid>
           <Grid item xs={4}>
             <Typography align="center" color="textPrimary" variant="body1">
-              Off site
-            </Typography>
-          </Grid>
-          <Grid item xs={4}>
-            <Typography align="center" color="textPrimary" variant="body1">
-              Machine
-            </Typography>
-          </Grid>
-          <Grid item xs={4}>
-            <Typography align="center" color="textPrimary" variant="body1">
-              {`${product.onSitePrice} Ksh`}
-            </Typography>
-          </Grid>
-          <Grid item xs={4}>
-            <Typography align="center" color="textPrimary" variant="body1">
-              {`${product.offSitePrice} Ksh`}
-            </Typography>
-          </Grid>
-          <Grid item xs={4}>
-            <Typography align="center" color="textPrimary" variant="body1">
-              {`${product.machinePrice} Ksh`}
+              {/* {`${product.machinePrice} Ksh`} */}
             </Typography>
           </Grid>
         </Grid>
@@ -106,9 +89,9 @@ const ProductCard = ({ className, product, ...rest }) => {
   );
 };
 
-ProductCard.propTypes = {
+CenterCard.propTypes = {
   className: PropTypes.string,
   product: PropTypes.object.isRequired,
 };
 
-export default ProductCard;
+export default CenterCard;
