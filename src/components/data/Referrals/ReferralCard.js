@@ -1,0 +1,97 @@
+import React from "react";
+import PropTypes from "prop-types";
+import clsx from "clsx";
+import {
+  CardMedia,
+  Box,
+  Card,
+  CardContent,
+  Divider,
+  Grid,
+  Typography,
+  makeStyles,
+} from "@material-ui/core";
+import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
+// import { base_url } from "../../../urls";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    width: "auto",
+  },
+  media: {
+    height: 180,
+    margin: 20,
+  },
+  grid: {
+    margin: "0 auto",
+  },
+  statsItem: {
+    alignItems: "center",
+    display: "flex",
+  },
+  statsIcon: {
+    marginRight: theme.spacing(1),
+  },
+}));
+
+const CenterCard = ({ className, center, ...rest }) => {
+  const classes = useStyles();
+
+  console.log(center)
+
+  return (
+    <Card className={clsx(classes.root, className)} {...rest}>
+      <CardMedia
+        className={classes.media}
+        // image={product.imageUrl && `${base_url}/${product.imageUrl}`}
+        title={center.name}
+      />
+      <CardContent>
+        <Typography color="textPrimary" gutterBottom variant="h5">
+          {center.name}
+        </Typography>
+        <Grid className={classes.grid} align="center" container>
+          
+          <Grid item xs={4}>
+            <Typography align="center" color="textPrimary" variant="body1">
+              {/* {`${product.offSitePrice} Ksh`} */}
+            </Typography>
+          </Grid>
+          <Grid item xs={4}>
+            <Typography align="center" color="textPrimary" variant="body1">
+              {/* {`${product.machinePrice} Ksh`} */}
+            </Typography>
+          </Grid>
+        </Grid>
+      </CardContent>
+      <Box flexGrow={1} />
+      <Divider />
+      <Box p={2}>
+        <Grid container justify="space-between" spacing={2}>
+          <Grid className={classes.statsItem} item>
+            <EditIcon className={classes.statsIcon} size="20" color="action" />
+            <Typography color="textSecondary" display="inline" variant="body2">
+              Edit
+            </Typography>
+          </Grid>
+          <Grid className={classes.statsItem} item>
+            <DeleteIcon className={classes.statsIcon} color="action" />
+            <Typography color="textSecondary" display="inline" variant="body2">
+              Delete
+            </Typography>
+          </Grid>
+        </Grid>
+      </Box>
+    </Card>
+  );
+};
+
+CenterCard.propTypes = {
+  className: PropTypes.string,
+  product: PropTypes.object.isRequired,
+};
+
+export default CenterCard;

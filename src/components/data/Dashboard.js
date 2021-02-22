@@ -32,6 +32,7 @@ import ListAltIcon from "@material-ui/icons/ListAlt";
 import ContactsOutlinedIcon from "@material-ui/icons/ContactsOutlined";
 import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
 import WorkOutlineOutlinedIcon from "@material-ui/icons/WorkOutlineOutlined";
+import Referrals from "../data/Referrals/Referrals";
 
 function Copyright() {
   return (
@@ -151,6 +152,11 @@ export default function Dashboard() {
       title: "Products",
     },
     {
+      href: "/referrals",
+      icon: LocalMallOutlinedIcon,
+      title: "Referrals",
+    },
+    {
       href: "/orders",
       icon: LocalMallOutlinedIcon,
       title: "Orders",
@@ -257,6 +263,7 @@ export default function Dashboard() {
             <Route path="/products" component={ProductList} />
             <Route path="/employees" component={Employees} />
             <Route path="/centers" component={Centers} />
+            <Route path="/referrals" component={Referrals} />
             <Box pt={4}>
               <Copyright />
             </Box>
