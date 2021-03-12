@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 const queryClient = new QueryClient();
 
 const fetchEmployees = async () => {
-  const res = await fetch(`${base_url}/centers`);
+  const res = await fetch(`${base_url}/referrals`);
   return res.json();
 };
 
@@ -46,19 +46,19 @@ const Employees = () => {
     data,
     // isFetching,
     // isPreviousData,
-  } = useQuery(["centers", page], () => fetchEmployees(), {
+  } = useQuery(["referrals", page], () => fetchEmployees(), {
     keepPreviousData: true,
   });
 
   return (
     <Router>
-      <Page className={classes.root} title="Centers">
+      <Page className={classes.root} title="Referrals">
         {/* add handleopen here as props, but open and handleclose to remain her but passed into services etc */}
         <Toolbar />
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Route
-            path="/centers"
+            path="/referrals"
             render={(props) => (
               <Products {...props} data={data} classes={classes} />
             )}
@@ -80,12 +80,9 @@ const Products = ({ data, classes }) => {
         <Grid container spacing={3}>
           {data && console.log(data)}
           {data &&
-            data.centers.map((center) => (
+            data.referrals.map((center) => (
               <Grid item key={center._id} lg={3} md={6} xs={12}>
-                <CenterCard
-                  className={classes.productCard}
-                  center={center}
-                />
+                <CenterCard className={classes.productCard} center={center} />
               </Grid>
             ))}
         </Grid>
